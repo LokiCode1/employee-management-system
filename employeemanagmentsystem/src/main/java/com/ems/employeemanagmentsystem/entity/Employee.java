@@ -27,7 +27,7 @@ public class Employee {
 
 	private Integer zipcode;
 
-	private Integer phone;
+	private String phone;
 
 	@Column(name = "CompaneyId")
 	private Integer companyId;
@@ -85,11 +85,11 @@ public class Employee {
 		this.zipcode = zipcode;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
