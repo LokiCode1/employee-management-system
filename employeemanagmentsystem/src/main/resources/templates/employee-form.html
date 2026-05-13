@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: appLayout(~{::section}, 'Employee Form')}">
+<section>
+    <div class="max-w-3xl mx-auto">
+        <div class="rounded-2xl bg-white shadow-soft border border-slate-200 overflow-hidden">
+            <div class="px-6 py-5 border-b border-slate-200">
+                <h2 class="text-xl font-semibold text-slate-800" th:text="${formTitle}">Add Employee</h2>
+                <p class="text-sm text-slate-500 mt-1">Fill all required details and save.</p>
+            </div>
+
+            <form th:action="@{/employees/save}" th:object="${employee}" method="post" class="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">EMPID</label>
+                    <input type="number" th:field="*{empId}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('empId')}" th:errors="*{empId}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                    <input type="text" th:field="*{name}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                    <input type="email" th:field="*{email}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Phone</label>
+                    <input type="number" th:field="*{phone}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Company ID</label>
+                    <input type="number" th:field="*{companyId}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Zipcode</label>
+                    <input type="number" th:field="*{zipcode}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Street</label>
+                    <input type="text" th:field="*{street}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('street')}" th:errors="*{street}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Suite</label>
+                    <input type="text" th:field="*{suite}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('suite')}" th:errors="*{suite}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">City</label>
+                    <input type="text" th:field="*{city}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Website</label>
+                    <input type="text" th:field="*{website}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('website')}" th:errors="*{website}"></p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1">BC</label>
+                    <input type="text" th:field="*{bc}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('bc')}" th:errors="*{bc}"></p>
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium text-slate-700 mb-1">Catch Phrase</label>
+                    <input type="text" th:field="*{catchPhrase}" class="w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"/>
+                    <p class="text-rose-600 text-xs mt-1" th:if="${#fields.hasErrors('catchPhrase')}" th:errors="*{catchPhrase}"></p>
+                </div>
+
+                <div class="md:col-span-2 flex items-center justify-end gap-3 pt-2">
+                    <a th:href="@{/employees/dashboard}" class="px-4 py-2 rounded-lg border border-slate-300 text-slate-600 hover:bg-slate-50">Cancel</a>
+                    <button type="submit" class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">Save Employee</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</html>
